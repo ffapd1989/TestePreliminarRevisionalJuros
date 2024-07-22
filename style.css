@@ -1,0 +1,101 @@
+body{
+    background: linear-gradient(#ffffff, #e6ffef);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+fieldset{
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: left;
+    align-items: left;
+    margin: auto;
+    border-width: 5px;
+    border-color: #01652d;
+    }
+
+legend{
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+input,select{
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border-width: 1px;
+    background-color: #01652d;
+    font-size: 1.4rem;
+    color:#ffffff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 80%;
+    transition: .5s;
+}
+
+input:hover,select:hover{
+    opacity: 80%;
+}
+
+::placeholder{
+    color:rgb(255, 0, 0);
+    opacity:100%;
+    font-style: italic;
+    font-size: 15   px;
+    }
+
+label{
+    margin: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.banco-central{
+    background-color: #ebffb8;
+    color: #01652d;
+    width: 80%;
+}
+
+
+.banco-central-limit{
+    margin: 0.1rem;
+    width: 80%;
+    background-color: #c9ffb8;
+    color: #01652d;
+}
+.tabelajuros {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 1px;
+    border-style: solid;
+    border-width: thin;
+    text-align: center;
+}
+.conclus {
+    background: none;
+    color: rgb(14, 2, 2);
+    font-size: 1.4rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 80%;
+    border-style: none;
+    border-width: 0px;    
+}
+.botaoconclusao{
+    background-color: black;
+    border-radius: 0px;
+}
+.tldr{
+    border-radius: 0px;
+    font-size: 1.7rem;
+    font-weight: bold;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-width: 0px;
+}
+
+.valor-negativo{
+    background-color: #ce7575;
+}

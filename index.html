@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Teste preliminar revisional - meus juros são abusivos?</title>
+    <style>
+        #conclus {
+            font-weight: bold;
+        }
+
+        /* Estilos para impressão */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+                font-size: 7pt;
+                line-height: 1.4;
+                align-items: center;
+                                        
+           
+            }
+            * {
+                color: #000 !important;
+                background: #fff !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+                border-color: #000;
+                border-width: 1px;
+                background-color: #fff;
+                align-items: center;
+            }
+            .no-print {
+                display: none !important;
+            }
+            @page {
+                size: A4 portrait;
+                margin: 10mm;
+            }
+        }
+
+        #pdf-template {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <form>
+        <fieldset>
+            <legend>OS JUROS DO MEU CONTRATO<br>ESTÃO ABUSIVOS?</legend>
+
+            <p>
+              <label for="ip_assistido">NOME<br>
+              </label>
+              <input type="text" id="ip_assistido">
+              
+              <label for="ip_cpf"><br>CPF<br>
+              </label>
+              <input type="text" id="ip_cpf">
+              
+              <label for="ip_data"><br>MÊS EM QUE CELEBRADO O EMPRÉSTIMO<br></label>
+              <input type="month" id="ip_data">
+              
+              <label for="ip_modalidade"><br>MODALIDADE<br>
+              </label>
+              <select id="ip_modalidade">
+                <option value="nihil">SELECIONE SEU TIPO DE CONTRATO</option>
+                <option value="25463">CHEQUE ESPECIAL (25463)</option>
+                <option value="25477">CARTÃO DE CRÉDITO - rotativo (25477)</option>
+                <option value="25478">CARTÃO DE CRÉDITO - parcelado (25478)</option>
+                <option value="25468">CONSIGNADO aposentados e pensionistas INSS (25468)</option>
+                <option value="25467">CONSIGNADO servidor público (25467)</option>
+                <option value="25466">CONSIGNADO empregado privado (25466)</option>
+                <option value="25464">CRÉDITO PESSOAL não-consignado (25464)</option>
+                <option value="25465">CRÉDITO não-consignado para REFINANCIAMENTO de outras dívidas (25465)</option>
+                <option value="25472">CRÉDITO para aquisição de outros bens (exceto veículos) (25472)</option>
+                <option value="25471">VEÍCULOS - Alienação Fiduciária (25471)</option>
+                
+
+              </select>
+              
+              <label for="ip_taxa_mensal_contratual"><br>
+              </label>
+            </p>
+            <table width="80%" height="164" class="tabelajuros">
+              <tbody class="tabelajuros">
+                <tr>
+                  <td width="25%" style="font-size: 1.5rem; text-decoration: underline;">TAXA (%)</td>
+                  <td width="25%">CONTRATUAL</td>
+                  <td width="25%">MÉDIA<BR>BACEN</td>
+                  <td width="25%">PARÂMETRO ABUSIVIDADE 50%</td>
+                </tr>
+                <tr>
+                  <td width="25%">ao mês</td>
+                  <td width="25%"><input type="number" id="ip_taxa_mensal_contratual"></td>
+                  <td width="25%"><input type="number" id="ip_taxa_mensal_bacen" class="banco-central" readonly placeholder="auto" style="cursor: not-allowed;"></td>
+                  <td width="25%"><input type="number" id="ip_taxa_mensal_bacen_limit50" class="banco-central-limit" readonly placeholder="auto" style="cursor: not-allowed;"></td>
+                </tr>
+                <tr>
+                  <td width="25%">ao ano</td>
+                  <td width="25%"><input type="number" id="ip_taxa_anual_contratual" readonly placeholder="auto" style="cursor: not-allowed;"></td>
+                  <td width="25%"><input type="number" id="ip_taxa_anual_bacen" class="banco-central" readonly placeholder="auto" style="cursor: not-allowed;"></td>
+                  <td width="25%"><input type="number" id="ip_taxa_anual_bacen_limit50" class="banco-central-limit" readonly placeholder="auto" style="cursor: not-allowed;"></td>
+                </tr>
+              </tbody>
+            </table>
+            
+				        <br>
+                <input id="submitButton" type="button" value="ENVIAR" style="color: black; background-color: transparent; border-radius: 0px; width: 80%; height: 2rem; visibility: initial;" ><br>
+        <label for="tldr"><u><b>CONCLUSÃO</b></u><br></label>
+        <input type="text" id="tldr" name="tldr" readonly class="tldr"><br><br>
+        <output id="conclus" name="conclus" readonly class="conclus"><br><br>
+    </fieldset>
+		<button type="button" id="generatePDF" class="no-print">Gerar PDF</button><br><br>
+    <button type="button" id="printPage" class="no-print">Imprimir</button><br><br>
+    </form>
+
+    <!-- Template HTML para o PDF -->
+    <div id="pdf-template">
+        <h1>Resultados</h1>
+        <p><strong>Taxa Mensal Contratual:</strong> <span id="pdf-taxa-mensal-contratual"></span></p>
+        <p><strong>Taxa Mensal BACEN:</strong> <span id="pdf-taxa-mensal-bacen"></span></p>
+        <p><strong>Conclusão:</strong> <span id="pdf-conclus"></span></p>
+        <p><strong>TLDR:</strong> <span id="pdf-tldr"></span></p>
+    </div>
+
+    <br>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.2.6/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js" type="text/javascript"></script>
+    <script src="masks.js"></script>
+    <script src="scriptsimplificado.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+</body>
+</html>
