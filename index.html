@@ -87,25 +87,29 @@
             <table width="80%" height="164" class="tabelajuros">
               <tbody class="tabelajuros">
                 <tr>
-                  <td width="25%" style="font-size: 1.5rem; text-decoration: underline;">TAXA (%)</td>
-                  <td width="25%">CONTRATUAL</td>
-                  <td width="25%">MÉDIA<BR>BACEN</td>
-                  <td width="25%">PARÂMETRO ABUSIVIDADE 50%</td>
+                  <td width="20%" style="font-size: 1.5rem; text-decoration: underline;">TAXA (%)</td>
+                  <td width="20%">CONTRATUAL</td>
+                  <td width="20%">MÉDIA<BR>BACEN</td>
+                  <td width="20%">PARÂMETRO ABUSIVIDADE 30%</td>
+                  <td width="20%">PARÂMETRO ABUSIVIDADE 50%</td>
                 </tr>
                 <tr>
-                  <td width="25%">ao mês</td>
-                  <td width="25%"><input type="number" id="ip_taxa_mensal_contratual"></td>
-                  <td width="25%"><input type="number" id="ip_taxa_mensal_bacen" class="banco-central" readonly placeholder="auto" style="cursor: not-allowed;"></td>
-                  <td width="25%"><input type="number" id="ip_taxa_mensal_bacen_limit50" class="banco-central-limit" readonly placeholder="auto" style="cursor: not-allowed;"></td>
+                  <td width="20%">ao mês</td>
+                  <td width="20%"><input type="number" id="ip_taxa_mensal_contratual"></td>
+                  <td width="20%"><input type="number" id="ip_taxa_mensal_bacen" class="banco-central" readonly placeholder="automático" style="cursor: not-allowed;"></td>
+                  <td width="20%"><input type="number" id="ip_taxa_mensal_bacen_limit30" class="banco-central-limit30" readonly placeholder="automático" style="cursor: not-allowed;"></td>
+                  <td width="20%"><input type="number" id="ip_taxa_mensal_bacen_limit50" class="banco-central-limit50" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                 </tr>
                 <tr>
-                  <td width="25%">ao ano</td>
-                  <td width="25%"><input type="number" id="ip_taxa_anual_contratual" readonly placeholder="auto" style="cursor: not-allowed;"></td>
-                  <td width="25%"><input type="number" id="ip_taxa_anual_bacen" class="banco-central" readonly placeholder="auto" style="cursor: not-allowed;"></td>
-                  <td width="25%"><input type="number" id="ip_taxa_anual_bacen_limit50" class="banco-central-limit" readonly placeholder="auto" style="cursor: not-allowed;"></td>
+                  <td width="20%">ao ano</td>
+                  <td width="20%"><input type="number" id="ip_taxa_anual_contratual" readonly placeholder="automático" style="cursor: not-allowed;"></td>
+                  <td width="20%"><input type="number" id="ip_taxa_anual_bacen" class="banco-central" readonly placeholder="automático" style="cursor: not-allowed;"></td>
+                  <td width="20%"><input type="number" id="ip_taxa_anual_bacen_limit30" class="banco-central-limit30" readonly placeholder="automático" style="cursor: not-allowed;"></td>
+                  <td width="20%"><input type="number" id="ip_taxa_anual_bacen_limit50" class="banco-central-limit50" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                 </tr>
               </tbody>
             </table>
+            
             
 				        <br>
                 <input id="submitButton" type="button" value="ENVIAR" style="color: black; background-color: transparent; border-radius: 0px; width: 80%; height: 2rem; visibility: initial;" ><br>

@@ -79,9 +79,8 @@ async function mudar_modalidade(event) {
     const TAXA_MENSAL_BACEN_LIMIT50 = document.getElementById('ip_taxa_mensal_bacen_limit50');
     const TAXA_ANUAL_BACEN_LIMIT30 = document.getElementById('ip_taxa_anual_bacen_limit30');
     const TAXA_MENSAL_BACEN_LIMIT30 = document.getElementById('ip_taxa_mensal_bacen_limit30');
-    const MODALIDADE = event.target;  // Adicionando a referência à modalidade
-    
-    // Verifica se o valor da modalidade é "nihil"
+    const MODALIDADE = event.target;
+
     if (MODALIDADE.value === "nihil") {
         return;  // Sai da função sem fazer nada
     }
@@ -95,10 +94,16 @@ async function mudar_modalidade(event) {
         const filtered_data = data.filter(row => row.data === data_para_busca)[0];
 
         if (filtered_data) {
-            TAXA_MENSAL_BACEN.value = filtered_data.valor;
-            TAXA_ANUAL_BACEN.value = ((((1 + (filtered_data.valor / 100)) ** 12) - 1) * 100).toFixed(2);
-            TAXA_MENSAL_BACEN_LIMIT50.value = (filtered_data.valor * 1.5).toFixed(2);
-            TAXA_ANUAL_BACEN_LIMIT50.value = ((((1 + (filtered_data.valor / 100)) ** 12) - 1) * 100 * 1.5).toFixed(2);
+            // Atualizando os campos de taxas médias e limites
+            const valorTaxaMensal = filtered_data.valor;
+            
+            TAXA_MENSAL_BACEN.value = valorTaxaMensal;
+            TAXA_ANUAL_BACEN.value = ((((1 + (valorTaxaMensal / 100)) ** 12) - 1) * 100).toFixed(2);
+            
+            // Cálculo dos limites de 50% e 30%
+            TAXA_MENSAL_BACEN_LIMIT50.value = (valorTaxaMensal * 1.5).toFixed(2);
+            TAXA_ANUAL_BACEN_LIMIT50.value = ((((1 + (valorTaxaMensal / 100)) ** 12) - 1) * 100 * 1.5).toFixed(2);
+            
             TAXA_MENSAL_BACEN_LIMIT30.value = (valorTaxaMensal * 1.3).toFixed(2);
             TAXA_ANUAL_BACEN_LIMIT30.value = ((((1 + (valorTaxaMensal / 100)) ** 12) - 1) * 100 * 1.3).toFixed(2);
         } else {
@@ -108,6 +113,7 @@ async function mudar_modalidade(event) {
         console.log(`Erro ao buscar dados da modalidade: ${err.message}`);
     }
 }
+
 
 function parseFloatSeparator(str, sep) {
     if (!str)

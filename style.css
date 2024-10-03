@@ -25,9 +25,9 @@ input,select{
     padding: 0.5rem;
     border-radius: 1rem;
     border-width: 1px;
-    background-color: #01652d;
+    background-color: #e1ece6;
     font-size: 1.4rem;
-    color:#ffffff;
+    color:#1d1d1d;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 80%;
     transition: .5s;
@@ -38,10 +38,10 @@ input:hover,select:hover{
 }
 
 ::placeholder{
-    color:rgb(255, 0, 0);
+    color:rgb(173, 180, 172);
     opacity:100%;
     font-style: italic;
-    font-size: 15   px;
+    font-size: 12 px;
     }
 
 label{
@@ -51,19 +51,26 @@ label{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.banco-central{
-    background-color: #ebffb8;
-    color: #01652d;
+.banco-central {
+    background-color: #f7ffd1;
+    color: #2f6b35;
     width: 80%;
 }
 
-
-.banco-central-limit{
+.banco-central-limit30 {
     margin: 0.1rem;
     width: 80%;
-    background-color: #c9ffb8;
-    color: #01652d;
+    background-color: #d6f5d3;
+    color: #205c3b;
 }
+
+.banco-central-limit50 {
+    margin: 0.1rem;
+    width: 80%;
+    background-color: #accb98;
+    color: #000000;
+}
+
 .tabelajuros {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
