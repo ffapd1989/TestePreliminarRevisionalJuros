@@ -77,6 +77,8 @@ async function mudar_modalidade(event) {
     const TAXA_ANUAL_BACEN = document.getElementById('ip_taxa_anual_bacen');
     const TAXA_ANUAL_BACEN_LIMIT50 = document.getElementById('ip_taxa_anual_bacen_limit50');
     const TAXA_MENSAL_BACEN_LIMIT50 = document.getElementById('ip_taxa_mensal_bacen_limit50');
+    const TAXA_ANUAL_BACEN_LIMIT30 = document.getElementById('ip_taxa_anual_bacen_limit30');
+    const TAXA_MENSAL_BACEN_LIMIT30 = document.getElementById('ip_taxa_mensal_bacen_limit30');
     const MODALIDADE = event.target;  // Adicionando a referência à modalidade
     
     // Verifica se o valor da modalidade é "nihil"
@@ -97,6 +99,8 @@ async function mudar_modalidade(event) {
             TAXA_ANUAL_BACEN.value = ((((1 + (filtered_data.valor / 100)) ** 12) - 1) * 100).toFixed(2);
             TAXA_MENSAL_BACEN_LIMIT50.value = (filtered_data.valor * 1.5).toFixed(2);
             TAXA_ANUAL_BACEN_LIMIT50.value = ((((1 + (filtered_data.valor / 100)) ** 12) - 1) * 100 * 1.5).toFixed(2);
+            TAXA_MENSAL_BACEN_LIMIT30.value = (valorTaxaMensal * 1.3).toFixed(2);
+            TAXA_ANUAL_BACEN_LIMIT30.value = ((((1 + (valorTaxaMensal / 100)) ** 12) - 1) * 100 * 1.3).toFixed(2);
         } else {
             console.error(`Valor de Taxa Mensal Não encontrado para a Data ${data_para_busca} de Modalidade ${MODALIDADE.value}`);
         }
@@ -134,18 +138,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const taxaMensalContratual = parseFloatSeparator(TAXA_MENSAL_CONTRATUAL.value);
         const taxaMensalBacen = parseFloatSeparator(TAXA_MENSAL_BACEN.value);
         const taxaMensalBacenLimit50 = (taxaMensalBacen * 1.5).toFixed(2);
-
+        const taxaMensalBacenLimit30 = (taxaMensalBacen * 1.3).toFixed(2);
+    
         if (isNaN(taxaMensalContratual) || isNaN(taxaMensalBacen)) {
             CONCLUS.value = 'Por favor, insira valores válidos para as taxas.';
             TLDR.value = '';
             return;
         }
-
+    
         if (taxaMensalContratual > taxaMensalBacenLimit50) {
             CONCLUS.value = `Veja-se que a taxa de juros contratual (${taxaMensalContratual}% a.m.) é superior a ${taxaMensalBacenLimit50}% a.m., valor equivalente a 1,5x (uma vez e meia) o valor da taxa média de juros para o período da contratação conforme apurado pelo BACEN (${taxaMensalBacen}%).`;
             TLDR.value = 'SIM, HÁ JUROS ABUSIVOS.';
-        } else if (taxaMensalContratual <= taxaMensalBacenLimit50 && taxaMensalContratual >= taxaMensalBacen) {
-            CONCLUS.value = `Verifica-se que a taxa contratual (${taxaMensalContratual}% a.m.) até é superior à taxa média apurada pelo BACEN  (${taxaMensalBacen}% a.m.), porém sem exceder-lhe em 1,5x (uma vez e meia) (equivalente a totalizaria ${taxaMensalBacenLimit50}% a.m.), pelo que não pode ser considerado abusiva`;
+        } else if (taxaMensalContratual > taxaMensalBacenLimit30 && taxaMensalContratual <= taxaMensalBacenLimit50) {
+            CONCLUS.value = `Verifica-se que a taxa de juros contratual (${taxaMensalContratual}% a.m.) é superior a ${taxaMensalBacenLimit30}% a.m., valor equivalente à margem tolerável de 30% sobre a taxa média de juros (${taxaMensalBacen}% a.m.), mas não excedendo a margem de 50% (que seria de ${taxaMensalBacenLimit50}% a.m.). A constatação de abusividade fica dependente de interpretação jurídica e da oscilação jurisprudencial.`;
+            TLDR.value = 'ENTENDEMOS QUE SIM, MAS...';
+        } else if (taxaMensalContratual <= taxaMensalBacenLimit30 && taxaMensalContratual >= taxaMensalBacen) {
+            CONCLUS.value = `Verifica-se que a taxa contratual (${taxaMensalContratual}% a.m.) até é superior à taxa média apurada pelo BACEN (${taxaMensalBacen}% a.m.), porém sem exceder a margem de 30% (equivalente a ${taxaMensalBacenLimit30}% a.m.), pelo que não pode ser considerada abusiva.`;
             TLDR.value = 'NÃO, não há juros abusivos.';
         } else if (taxaMensalContratual < taxaMensalBacen) {
             CONCLUS.value = `TAXA MENSAL CONTRATUAL (${taxaMensalContratual}% a.m.) É INFERIOR À TAXA MÉDIA DO BACEN (${taxaMensalBacen}% a.m.). NÃO HÁ JUROS ABUSIVOS.`;
@@ -155,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             TLDR.value = '';
         }
     }
+    
 
     function parseFloatSeparator(str) {
         if (!str) return 0;
