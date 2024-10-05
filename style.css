@@ -12,8 +12,8 @@ fieldset{
     flex-direction: column;
     padding: 1rem;
     justify-content: left;
-    align-items: normal;
-    margin: 2rem;
+    align-items: left;
+    margin: 1rem;
     border-width: 2px;
     border-color: #186c4c;
     }
@@ -21,8 +21,6 @@ fieldset{
 legend{
     text-align: center;
     font-size: 1.6rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0px;
 }
