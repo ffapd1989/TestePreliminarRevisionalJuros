@@ -1,6 +1,9 @@
-body{
+html, body{
     background: linear-gradient(#ffffff, #e1ffed);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height: 96vh;
+    margin: 0;
+    padding: 0;
 }
 
 fieldset{
@@ -9,16 +12,19 @@ fieldset{
     flex-direction: column;
     padding: 1rem;
     justify-content: left;
-    align-items: left;
-    margin: 1rem;
-    border-width: 3px;
-    border-color: #000000;
+    align-items: normal;
+    margin: 2rem;
+    border-width: 2px;
+    border-color: #186c4c;
     }
 
 legend{
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.6rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0px;
 }
 
 input,select{
@@ -26,7 +32,7 @@ input,select{
     border-radius: 1rem;
     border-width: 1px;
     background-color: #e1ece6;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color:#1d1d1d;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 90%;
@@ -41,12 +47,11 @@ input:hover,select:hover{
     color:rgb(173, 180, 172);
     opacity:100%;
     font-style: italic;
-    font-size: 12 px;
+    font-size: 1.0rem;
     }
 
 label{
-    margin: 0.2rem;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: bold;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -89,7 +94,7 @@ label{
     font-size: 1.2rem;
     border-radius: 1px;
     border-style: solid;
-    border-width: thin;
+    border-width: 0px;
     text-align: center;
 }
 .conclus {
@@ -97,9 +102,10 @@ label{
     color: rgb(14, 2, 2);
     font-size: 1.4rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width: 80%;
+    width: 100%;
     border-style: none;
-    border-width: 0px;    
+    border-width: 0px;
+    text-align: justify;    
 }
 .botaoconclusao{
     background-color: black;
@@ -120,13 +126,14 @@ label{
 }
 .footer {
     margin-top: 0px;
-    font-size: 13px;
+    font-size: 14px;
     text-align: center;
     color: #555555;
 }
 .footer-table {
         margin: 0 auto; /* Centraliza a tabela horizontalmente */
         table-layout: fixed; /* Garante que as colunas tenham largura fixa */
+        padding-top: 1rem;
 }
     
 .footer-table td {
@@ -134,16 +141,19 @@ label{
         padding: 0.5rem;
 }
 .logo {
-    width: 200px;
+    width: 300px;
     display: block;
     margin: 0 auto;
 }
 .logo-footer {
-    width: 300px; /* Ajuste o tamanho da logo conforme necessário */
+    width: 350px; /* Ajuste o tamanho da logo conforme necessário */
 }
 .disclaimer {
     margin-left: 0rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: normal;
-
+    width: 90%;
+    text-align: justify;
+    margin-left: 2rem;
+    line-height: 90%;
 }

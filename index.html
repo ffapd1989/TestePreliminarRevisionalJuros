@@ -15,9 +15,9 @@
             body {
                 -webkit-print-color-adjust: exact;
                 color-adjust: exact;
-                font-size: 6pt;
                 line-height: 1.4;
                 align-items: left;
+                height: auto;
                                         
            
             }
@@ -32,18 +32,41 @@
                 align-items: left;
                 border-radius: 0rem;
             }
+            input,select{
+              font-size: 1.2rem;
+              border-width: 0px;
+            }
+            fieldset{
+              border-width: 2px;
+              border-color: black;
+              border-radius: 1rem;
+            }
             .no-print {
                 display: none !important;
             }
             .disclaimer {
                 font-size: 0.8rem;
+            }   
+            .tldr {
+                font-size: 1.2rem;
+                color: black;
+                font-weight: bold;
+                border-style: none;
+                border-width: 0px;            
+            }
+            .conclus {
+                font-size: 1.0rem;
+                color: #000;            
             }
             .label{
-                font-size: 0.8rem;
+                font-size: 0.7rem;             
           }
+            .tabelajuros {
+                font-size: 1rem;
+            }
             @page {
                 size: A4 portrait;
-                margin: 7mm;
+                margin: 4mm;
             }
           }
         #pdf-template {
@@ -55,16 +78,15 @@
 
     <form>
         <fieldset>
-            <legend>OS JUROS DO MEU CONTRATO<br>ESTÃO ABUSIVOS?</legend>
-
-            <p>
+            <legend>OS JUROS DO MEU CONTRATO ESTÃO ABUSIVOS?<div style="font-size: 0.9rem; font-weight: normal;">TESTE DE ABUSIVIDADE DE JUROS PRÉVIO AO CÁLCULO REVISIONAL</div></legend>
+            <p style="margin-top: 0px;">
               <label for="ip_assistido">NOME<br>
               </label>
-              <input type="text" id="ip_assistido">
+              <input type="text" id="ip_assistido" placeholder="NOME COMPLETO">
               
               <label for="ip_cpf"><br>CPF<br>
               </label>
-              <input type="text" id="ip_cpf">
+              <input type="text" id="ip_cpf" placeholder="000.000.000-00">
               
               <label for="ip_data"><br>MÊS EM QUE CELEBRADO O EMPRÉSTIMO<br></label>
               <input type="month" id="ip_data">
@@ -90,7 +112,7 @@
               <label for="ip_taxa_mensal_contratual"><br>
               </label>
             </p>
-            <table width="90%" height="164" class="tabelajuros">
+            <table width="100%" class="tabelajuros">
               <tbody class="tabelajuros">
                 <tr>
                   <td width="20%" style="font-size: 1.5rem; text-decoration: underline;">TAXA (%)</td>
@@ -101,7 +123,7 @@
                 </tr>
                 <tr>
                   <td width="20%">ao mês</td>
-                  <td width="20%"><input type="number" id="ip_taxa_mensal_contratual" class="contratual"></td>
+                  <td width="20%"><input type="number" id="ip_taxa_mensal_contratual" class="contratual" placeholder="DIGITE AQUI"></td>
                   <td width="20%"><input type="number" id="ip_taxa_mensal_bacen" class="banco-central" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                   <td width="20%"><input type="number" id="ip_taxa_mensal_bacen_limit30" class="banco-central-limit30" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                   <td width="20%"><input type="number" id="ip_taxa_mensal_bacen_limit50" class="banco-central-limit50" readonly placeholder="automático" style="cursor: not-allowed;"></td>
@@ -117,14 +139,17 @@
             </table>
             
             
-				        <br>
-                <input id="submitButton" type="button" class="no-print" value="ENVIAR" style="color: black; background-color: transparent; border-radius: 0px; width: 80%; height: 2rem; visibility: initial;" ><br>
+				       
+               
         <label for="tldr"><u><b>CONCLUSÃO</b></u><br></label>
-        <input type="text" id="tldr" name="tldr" readonly class="tldr"><br><br>
-        <output id="conclus" name="conclus" readonly class="conclus"><br><br>
-          </fieldset>
-        </form>
-        <div class=disclaimer><B>OBS:</B> As taxas médias do Banco Central do Brasil são obtidas diretamente por esta aplicação, através de API disponibilizada SGS-BACEN na plataforma <a href="https://dadosabertos.bcb.gov.br/dataset">Dados Abertos</a>, refletindo exatamente as séries temporais acessíveis pela internet para idêntico mês de contratação e tipo de aplicação financeira. Em caso de alguma discrepância, pedimos informar a cate@defensoria.rs.def.br .</div>
+        <input type="text" id="tldr" name="tldr" readonly class="tldr">
+        <output id="conclus" name="conclus" readonly class="conclus">
+          
+        </fieldset>
+              
+                  </form>
+                  <div class="disclaimer"><B>OBS:</B> As taxas médias do Banco Central do Brasil são obtidas diretamente por esta aplicação, através de API disponibilizada SGS-BACEN na plataforma <a href="https://dadosabertos.bcb.gov.br/dataset">Dados Abertos</a>, refletindo exatamente as séries temporais acessíveis pela internet para idêntico mês de contratação e tipo de produto financeiro. Em caso de alguma discrepância, pedimos informar a cate@defensoria.rs.def.br .
+                  <br><br><b> OBS2:</b> A análise jurídica da abusividade dos juros de determinado contrato deve ser aperfeiçoada por operador do Direito, servindo a presente ferramenta como mera forma de facilitar o acesso aos dados do Sistema Gerenciador de Séries Temporais do Banco Central do Brasil, diante de sua hermética interface ao público leigo. Pode haver outros fatores para além da mera abusividade quantitativa dos juros contratuais que ensejem ação revisional, devendo tal análise ser feita por profissional especializado.</div>  
         <div class="footer" >
           <table class="footer-table">
               <tr>
@@ -134,7 +159,7 @@
                       </a>
                   </td>
                   <td class="footer-text">
-                  <p style="font-weight: bold;">FORNECIDO PELO SETOR  DE CÁLCULOS<BR> DA DEFENSORIA PÚBLICA DO ESTADO DO RS</p><div class="footer">Versão 1.1 (em 04/10/2024 às 19:30).</div><div class="footer" style="font-size: 12px; margin-top: 0px; "><br>Criado por Felipe Drummond usando o ChatGPT-4o.<br><b>Sugestões? </b><a href="mailto: felipe-drummond@defensoria.rs.def.br">E-mail</a></div></p>
+                  <div style="font-weight: normal">DESENVOLVIDO E FORNECIDO PELO <B>CATE - CÁLCULOS</B><BR> DA DEFENSORIA PÚBLICA DO ESTADO DO RIO GRANDE DO SUL</div><div class="footer" style="font-size: 80%">v1.1 de 04/10/2024.</div><div class="footer no-print" style="font-size: 80%; margin-top: 0px;"><br><b>Desenvolvimento:</b> Defensor Público FELIPE DRUMMOND usando ChatGPT-4o<div style="font-size: 90%; font-style: italic;">Agradecemos a Yan Christino pelo código inicial para uso da API do BACEN.</div><b>Sugestões? </b><a href="mailto: cate@defensoria.rs.def.br">E-mail</a></div></p>
                   </td>
               </tr>
           </table>
