@@ -1,18 +1,18 @@
 body{
-    background: linear-gradient(#ffffff, #e6ffef);
+    background: linear-gradient(#ffffff, #e1ffed);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 fieldset{
     display: flex;
-    width: 90%;
+    width: 93%;
     flex-direction: column;
     padding: 1rem;
     justify-content: left;
     align-items: left;
-    margin: auto;
-    border-width: 5px;
-    border-color: #01652d;
+    margin: 1rem;
+    border-width: 3px;
+    border-color: #000000;
     }
 
 legend{
@@ -29,12 +29,12 @@ input,select{
     font-size: 1.4rem;
     color:#1d1d1d;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width: 80%;
+    width: 90%;
     transition: .5s;
 }
 
 input:hover,select:hover{
-    opacity: 80%;
+    opacity: 50%;
 }
 
 ::placeholder{
@@ -45,30 +45,42 @@ input:hover,select:hover{
     }
 
 label{
-    margin: 0.5rem;
-    font-size: 1.5rem;
+    margin: 0.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.contratual {
+    margin: 0.2rem;
+    background-color: #e1ece6;
+    color: #1d1d1d;
+    width: 80%;
+    min-width: 100px;
+}
+
 .banco-central {
+    margin: 0.2rem;
     background-color: #f7ffd1;
     color: #2f6b35;
     width: 80%;
+    min-width: 100px;
 }
 
 .banco-central-limit30 {
-    margin: 0.1rem;
+    margin: 0.2rem;
     width: 80%;
     background-color: #d6f5d3;
     color: #205c3b;
+    min-width: 100px;
 }
 
 .banco-central-limit50 {
-    margin: 0.1rem;
+    margin: 0.2rem;
     width: 80%;
     background-color: #accb98;
     color: #000000;
+    min-width: 100px;
 }
 
 .tabelajuros {
@@ -105,4 +117,33 @@ label{
 
 .valor-negativo{
     background-color: #ce7575;
+}
+.footer {
+    margin-top: 0px;
+    font-size: 13px;
+    text-align: center;
+    color: #555555;
+}
+.footer-table {
+        margin: 0 auto; /* Centraliza a tabela horizontalmente */
+        table-layout: fixed; /* Garante que as colunas tenham largura fixa */
+}
+    
+.footer-table td {
+        vertical-align: middle; /* Alinha verticalmente no meio */
+        padding: 0.5rem;
+}
+.logo {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+.logo-footer {
+    width: 300px; /* Ajuste o tamanho da logo conforme necessário */
+}
+.disclaimer {
+    margin-left: 0rem;
+    font-size: 0.9rem;
+    font-weight: normal;
+
 }

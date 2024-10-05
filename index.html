@@ -15,9 +15,9 @@
             body {
                 -webkit-print-color-adjust: exact;
                 color-adjust: exact;
-                font-size: 7pt;
+                font-size: 6pt;
                 line-height: 1.4;
-                align-items: center;
+                align-items: left;
                                         
            
             }
@@ -29,17 +29,23 @@
                 border-color: #000;
                 border-width: 1px;
                 background-color: #fff;
-                align-items: center;
+                align-items: left;
+                border-radius: 0rem;
             }
             .no-print {
                 display: none !important;
             }
+            .disclaimer {
+                font-size: 0.8rem;
+            }
+            .label{
+                font-size: 0.8rem;
+          }
             @page {
                 size: A4 portrait;
-                margin: 8mm;
+                margin: 7mm;
             }
-        }
-
+          }
         #pdf-template {
             display: none;
         }
@@ -84,7 +90,7 @@
               <label for="ip_taxa_mensal_contratual"><br>
               </label>
             </p>
-            <table width="80%" height="164" class="tabelajuros">
+            <table width="90%" height="164" class="tabelajuros">
               <tbody class="tabelajuros">
                 <tr>
                   <td width="20%" style="font-size: 1.5rem; text-decoration: underline;">TAXA (%)</td>
@@ -95,14 +101,14 @@
                 </tr>
                 <tr>
                   <td width="20%">ao mês</td>
-                  <td width="20%"><input type="number" id="ip_taxa_mensal_contratual"></td>
+                  <td width="20%"><input type="number" id="ip_taxa_mensal_contratual" class="contratual"></td>
                   <td width="20%"><input type="number" id="ip_taxa_mensal_bacen" class="banco-central" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                   <td width="20%"><input type="number" id="ip_taxa_mensal_bacen_limit30" class="banco-central-limit30" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                   <td width="20%"><input type="number" id="ip_taxa_mensal_bacen_limit50" class="banco-central-limit50" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                 </tr>
                 <tr>
                   <td width="20%">ao ano</td>
-                  <td width="20%"><input type="number" id="ip_taxa_anual_contratual" readonly placeholder="automático" style="cursor: not-allowed;"></td>
+                  <td width="20%"><input type="number" id="ip_taxa_anual_contratual" class="contratual" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                   <td width="20%"><input type="number" id="ip_taxa_anual_bacen" class="banco-central" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                   <td width="20%"><input type="number" id="ip_taxa_anual_bacen_limit30" class="banco-central-limit30" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                   <td width="20%"><input type="number" id="ip_taxa_anual_bacen_limit50" class="banco-central-limit50" readonly placeholder="automático" style="cursor: not-allowed;"></td>
@@ -112,32 +118,35 @@
             
             
 				        <br>
-                <input id="submitButton" type="button" value="ENVIAR" style="color: black; background-color: transparent; border-radius: 0px; width: 80%; height: 2rem; visibility: initial;" ><br>
+                <input id="submitButton" type="button" class="no-print" value="ENVIAR" style="color: black; background-color: transparent; border-radius: 0px; width: 80%; height: 2rem; visibility: initial;" ><br>
         <label for="tldr"><u><b>CONCLUSÃO</b></u><br></label>
         <input type="text" id="tldr" name="tldr" readonly class="tldr"><br><br>
         <output id="conclus" name="conclus" readonly class="conclus"><br><br>
-    </fieldset>
-		<button type="button" id="generatePDF" class="no-print">Gerar PDF</button><br><br>
-    <button type="button" id="printPage" class="no-print">Imprimir</button><br><br>
-    </form>
+          </fieldset>
+        </form>
+        <div class=disclaimer><B>OBS:</B> As taxas médias do Banco Central do Brasil são obtidas diretamente por esta aplicação, através de API disponibilizada SGS-BACEN na plataforma <a href="https://dadosabertos.bcb.gov.br/dataset">Dados Abertos</a>, refletindo exatamente as séries temporais acessíveis pela internet para idêntico mês de contratação e tipo de aplicação financeira. Em caso de alguma discrepância, pedimos informar a cate@defensoria.rs.def.br .</div>
+        <div class="footer" >
+          <table class="footer-table">
+              <tr>
+                  <td>
+                      <a href="https://www.defensoria.rs.def.br" target="_blank">
+                          <img src="https://www.defensoria.rs.def.br/themes/modelo-hotsite/images/logos/logo.png" alt="Logo da Defensoria Pública" class="logo-footer">
+                      </a>
+                  </td>
+                  <td class="footer-text">
+                  <p style="font-weight: bold;">FORNECIDO PELO SETOR  DE CÁLCULOS<BR> DA DEFENSORIA PÚBLICA DO ESTADO DO RS</p><div class="footer">Versão 1.1 (em 04/10/2024 às 19:30).</div><div class="footer" style="font-size: 12px; margin-top: 0px; "><br>Criado por Felipe Drummond usando o ChatGPT-4o.<br><b>Sugestões? </b><a href="mailto: felipe-drummond@defensoria.rs.def.br">E-mail</a></div></p>
+                  </td>
+              </tr>
+          </table>
+      </div>
+      
 
-    <!-- Template HTML para o PDF -->
-    <div id="pdf-template">
-        <h1>Resultados</h1>
-        <p><strong>Taxa Mensal Contratual:</strong> <span id="pdf-taxa-mensal-contratual"></span></p>
-        <p><strong>Taxa Mensal BACEN:</strong> <span id="pdf-taxa-mensal-bacen"></span></p>
-        <p><strong>Conclusão:</strong> <span id="pdf-conclus"></span></p>
-        <p><strong>TLDR:</strong> <span id="pdf-tldr"></span></p>
-    </div>
-
-    <br>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.2.6/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js" type="text/javascript"></script>
     <script src="masks.js"></script>
     <script src="scriptsimplificado.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
 </body>
 </html>

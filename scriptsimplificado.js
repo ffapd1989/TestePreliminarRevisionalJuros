@@ -8,10 +8,10 @@ MODALIDADE.addEventListener('blur', mudar_modalidade);
 DATA_EMPRESTIMO.addEventListener('change', mudar_modalidade);
 
 
-//submitButton.addEventListener('click', function(event) {
-    // Chamar a função mudar_modalidade
-    //mudar_modalidade();
-//});
+submitButton.addEventListener('click', function(event) {
+    //Chamar a função mudar_modalidade
+    mudar_modalidade();
+});
 
 
 document.addEventListener('DOMContentLoaded', () => {
