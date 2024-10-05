@@ -8,7 +8,6 @@ MODALIDADE.addEventListener('blur', mudar_modalidade);
 DATA_EMPRESTIMO.addEventListener('change', mudar_modalidade);
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const TAXA_MENSAL_CONTRATUAL = document.getElementById('ip_taxa_mensal_contratual');
     const TAXA_ANUAL_CONTRATUAL = document.getElementById('ip_taxa_anual_contratual');
