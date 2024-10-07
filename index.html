@@ -18,27 +18,30 @@
                 line-height: 1.4;
                 align-items: left;
                 height: auto;
+                background-color: #fff !important;
+                background: #fff !important;
                                         
            
             }
             * {
                 color: #000 !important;
-                background: #fff !important;
                 box-shadow: none !important;
                 text-shadow: none !important;
                 border-color: #000;
                 border-width: 1px;
-                background-color: #fff;
                 align-items: left;
                 border-radius: 0rem;
             }
-            input,select{
+            input,input:hover,select:hover,select{
               font-size: 1.2rem;
               border-width: 0px;
+              border-color: grey;
+              box-shadow: none;
+              background-color: rgb(235, 235, 235) !important;
             }
             fieldset{
               border-width: 2px;
-              border-color: black;
+              border-color: rgb(167, 167, 167);
               border-radius: 1rem;
             }
             .no-print {
@@ -55,12 +58,26 @@
                 border-width: 0px;            
             }
             .conclus {
-                font-size: 1.0rem;
-                color: #000;            
+                font-size: 0.9rem;
+                color: #272727;            
             }
-            .label{
-                font-size: 0.7rem;             
-          }
+            .banco-central {
+                background-color: #e0e0e0 !important;
+            }
+
+            .banco-central-limit30 {
+                background-color: #d4d4d4 !important;
+            }
+
+            .banco-central-limit50 {
+                background-color: #cacaca !important;
+            }
+            label{
+                font-size: 0.9rem;
+                font-weight: normal;
+                text-decoration: none;
+                text-decoration-color: #e9e9e9;
+            }
             .tabelajuros {
                 font-size: 1rem;
             }
@@ -159,7 +176,7 @@
                       </a>
                   </td>
                   <td class="footer-text">
-                  <div style="font-weight: normal">DESENVOLVIDO E FORNECIDO PELO <B>CATE - CÁLCULOS</B><BR> DA DEFENSORIA PÚBLICA DO ESTADO DO RIO GRANDE DO SUL</div><div class="footer" style="font-size: 80%">v1.1 de 04/10/2024.</div><div class="footer no-print" style="font-size: 80%; margin-top: 0px;"><br><b>Desenvolvimento:</b> Defensor Público FELIPE DRUMMOND usando ChatGPT-4o<div style="font-size: 90%; font-style: italic;">Agradecemos a Yan Christino pela versão inicial da ferramenta com uso da API do BACEN!</div><b>Sugestões? </b><a href="mailto: cate@defensoria.rs.def.br">E-mail</a></div></p>
+                  <div style="font-weight: normal">DESENVOLVIDO E FORNECIDO PELO <B>CATE - CÁLCULOS</B><BR> DA DEFENSORIA PÚBLICA DO ESTADO DO RIO GRANDE DO SUL</div><div class="footer" style="font-size: 80%">v1.1.0.1 de 07/10/2024.</div><div class="footer no-print" style="font-size: 80%; margin-top: 0px;"><br><b>Desenvolvimento:</b> Defensor Público FELIPE DRUMMOND usando ChatGPT-4o<div style="font-size: 90%; font-style: italic;">Agradecemos a Yan Christino pela versão inicial da ferramenta com uso da API do BACEN!</div><b>Sugestões? </b><a href="mailto: cate@defensoria.rs.def.br">E-mail</a></div></p>
                   </td>
               </tr>
           </table>

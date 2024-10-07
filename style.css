@@ -1,9 +1,13 @@
 html, body{
-    background: linear-gradient(#ffffff, #e1ffed);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     height: 96vh;
     margin: 0;
     padding: 0;
+}
+
+body{
+    background: linear-gradient(#ffffff, #e1ffed);
+
 }
 
 fieldset{
@@ -38,7 +42,7 @@ input,select{
 }
 
 input:hover,select:hover{
-    opacity: 50%;
+    background-color: #f3fcf7;
 }
 
 ::placeholder{
@@ -52,6 +56,7 @@ label{
     font-size: 1.1rem;
     font-weight: bold;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: none;
 }
 
 .contratual {
