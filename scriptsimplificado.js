@@ -39,6 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Função que cria o botão de impressão
+function adicionarBotaoImprimir() {
+    return `<button class="btn-imprimir" onclick="window.print()" style="
+        background-color: #006400;  /* Verde escuro */
+        color: white;               /* Texto branco */
+        font-weight: bold;          /* Negrito */
+        font-size: 0.8rem;          /* Fonte pequena */
+        border: none;               /* Sem borda */
+        padding: 5px 10px;          /* Espaçamento interno */
+        margin-top: 10px;           /* Espaçamento superior */
+        border-radius: 5px;         /* Borda arredondada */
+        cursor: pointer;            /* Cursor de mão */
+    ">
+    IMPRIMIR
+    </button>`;
+}
 
 
 
@@ -141,20 +157,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         if (taxaMensalContratual > taxaMensalBacenLimit50) {
-            CONCLUS.value = `Veja-se que a taxa de juros contratual (${formatarNumeroComVirgula(taxaMensalContratual)}% a.m.) é superior a ${formatarNumeroComVirgula(taxaMensalBacenLimit50)}% a.m., valor equivalente a 1,5x (uma vez e meia) o valor da taxa média de juros para o período da contratação, conforme apurado pelo BACEN (${formatarNumeroComVirgula(taxaMensalBacen)}%). Assim, é manifesta a abusividade dos juros praticados e é sugerido buscar atendimento para ação revisional, conforme entendimento jurisprudencial consolidado sobre o tema.`;
+            CONCLUS.innerHTML = `Veja-se que a taxa de juros contratual (${formatarNumeroComVirgula(taxaMensalContratual)}% a.m.) é superior a ${formatarNumeroComVirgula(taxaMensalBacenLimit50)}% a.m., valor equivalente a 1,5x (uma vez e meia) o valor da taxa média de juros para o período da contratação, conforme apurado pelo BACEN (${formatarNumeroComVirgula(taxaMensalBacen)}%). Assim, é manifesta a abusividade dos juros praticados e é sugerido buscar atendimento para ação revisional, conforme entendimento jurisprudencial consolidado sobre o tema.` + adicionarBotaoImprimir();
             TLDR.value = 'SIM, OS JUROS CONTRATUAIS DO SEU CONTRATO SÃO ABUSIVOS.';
         } else if (taxaMensalContratual > taxaMensalBacenLimit30 && taxaMensalContratual <= taxaMensalBacenLimit50) {
-            CONCLUS.value = `Verifica-se que a taxa de juros contratual (${formatarNumeroComVirgula(taxaMensalContratual)}% a.m.) é superior a ${formatarNumeroComVirgula(taxaMensalBacenLimit30)}% a.m., valor equivalente à margem tolerável de 30% sobre a taxa média de juros para o período da contratação, conforme apurado pelo BACEN (${formatarNumeroComVirgula(taxaMensalBacen)}% a.m.), mas não é superior à margem de 50% (que seria de ${formatarNumeroComVirgula(taxaMensalBacenLimit50)}% a.m.). A constatação de abusividade fica dependente de interpretação jurídica e da oscilação jurisprudencial a respeito de ser tolerável a margem de abusividade considerada como 30% ou de 50% sobre a taxa média. Procure assistência jurídica para analisar a viabilidade de ação revisional.`;
+            CONCLUS.innerHTML = `Verifica-se que a taxa de juros contratual (${formatarNumeroComVirgula(taxaMensalContratual)}% a.m.) é superior a ${formatarNumeroComVirgula(taxaMensalBacenLimit30)}% a.m., valor equivalente à margem tolerável de 30% sobre a taxa média de juros para o período da contratação, conforme apurado pelo BACEN (${formatarNumeroComVirgula(taxaMensalBacen)}% a.m.), mas não é superior à margem de 50% (que seria de ${formatarNumeroComVirgula(taxaMensalBacenLimit50)}% a.m.). A constatação de abusividade fica dependente de interpretação jurídica e da oscilação jurisprudencial a respeito de ser tolerável a margem de abusividade considerada como 30% ou de 50% sobre a taxa média. Procure assistência jurídica para analisar a viabilidade de ação revisional.` + adicionarBotaoImprimir();
             TLDR.value = 'A CONSTATAÇÃO DA ABUSIVIDADE ESTÁ NUMA ZONA CINZENTA...';
         } else if (taxaMensalContratual <= taxaMensalBacenLimit30 && taxaMensalContratual >= taxaMensalBacen) {
-            CONCLUS.value = `Verifica-se que a taxa contratual (${formatarNumeroComVirgula(taxaMensalContratual)}% a.m.) até é superior à taxa média apurada pelo BACEN (${formatarNumeroComVirgula(taxaMensalBacen)}% a.m.), porém sem sequer exceder a margem tolerável de 30% (equivalente a ${formatarNumeroComVirgula(taxaMensalBacenLimit30)}% a.m.), pelo que não pode ser considerada abusiva, conforme entendimento jurisprudencial predominante.`;
+            CONCLUS.innerHTML = `Verifica-se que a taxa contratual (${formatarNumeroComVirgula(taxaMensalContratual)}% a.m.) até é superior à taxa média apurada pelo BACEN (${formatarNumeroComVirgula(taxaMensalBacen)}% a.m.), porém sem sequer exceder a margem tolerável de 30% (equivalente a ${formatarNumeroComVirgula(taxaMensalBacenLimit30)}% a.m.), pelo que não pode ser considerada abusiva, conforme entendimento jurisprudencial predominante.` + adicionarBotaoImprimir();
             TLDR.value = 'NÃO, NÃO HÁ JUROS ABUSIVOS NO SEU CONTRATO.';
         } else if (taxaMensalContratual < taxaMensalBacen) {
-            CONCLUS.value = `Verifica-se que a taxa mensal contratual praticada (${formatarNumeroComVirgula(taxaMensalContratual)}% a.m.) chega a ser inclusive INFERIOR à taxa média do BACEN para idêntico produto financeiro (${formatarNumeroComVirgula(taxaMensalBacen)}% a.m.). Ou seja, não há qualquer possibilidade de se considerarem abusivos os juros praticados, portanto, se não houver outras situações jurídicas complicadas, fique atento à ação de golpistas que prometam soluções milagrosas envolvendo revisão de juros.`;
+            CONCLUS.innerHTML = `Verifica-se que a taxa mensal contratual praticada (${formatarNumeroComVirgula(taxaMensalContratual)}% a.m.) chega a ser inclusive INFERIOR à taxa média do BACEN para idêntico produto financeiro (${formatarNumeroComVirgula(taxaMensalBacen)}% a.m.). Ou seja, não há qualquer possibilidade de se considerarem abusivos os juros praticados, portanto, se não houver outras situações jurídicas complicadas, fique atento à ação de golpistas que prometam soluções milagrosas envolvendo revisão de juros.` + adicionarBotaoImprimir();
             TLDR.value = 'NÃO, NÃO HÁ JUROS ABUSIVOS NO SEU CONTRATO. NÃO MESMO!';
         }
    }
     
+    // Adicionando uma checagem temporal a cada 4 segundos
+    setInterval(() => {
+        mudar_modalidade();  // Chamando a função sem evento específico
+    }, 1000);  // Tempo de 4 segundos (4000 ms)
+
 
     function parseFloatSeparator(str) {
         if (!str) return 0;

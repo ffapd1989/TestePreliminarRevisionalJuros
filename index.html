@@ -50,6 +50,9 @@
             .disclaimer {
                 font-size: 0.8rem;
             }   
+            .btn-imprimir {
+                display: none;
+            }
             .tldr {
                 font-size: 1.2rem;
                 color: black;
@@ -111,19 +114,24 @@
               <label for="ip_modalidade"><br>MODALIDADE<br>
               </label>
               <select id="ip_modalidade">
-                <option value="nihil">SELECIONE SEU TIPO DE CONTRATO</option>
-                <option value="25463">CHEQUE ESPECIAL (25463)</option>
-                <option value="25477">CARTÃO DE CRÉDITO - rotativo (25477)</option>
-                <option value="25478">CARTÃO DE CRÉDITO - parcelado (25478)</option>
-                <option value="25468">CONSIGNADO aposentados e pensionistas INSS (25468)</option>
-                <option value="25467">CONSIGNADO servidor público (25467)</option>
-                <option value="25466">CONSIGNADO empregado privado (25466)</option>
-                <option value="25464">CRÉDITO PESSOAL não-consignado (25464)</option>
-                <option value="25465">CRÉDITO não-consignado para REFINANCIAMENTO de outras dívidas (25465)</option>
-                <option value="25472">CRÉDITO para aquisição de outros bens (exceto veículos) (25472)</option>
-                <option value="25471">VEÍCULOS - Alienação Fiduciária (25471)</option>
-                
-
+                <optgroup label="PRINCIPAIS PESSOA FÍSICA">
+                    <option value="nihil">SELECIONE SEU TIPO DE CONTRATO</option>
+                    <option value="25463">CHEQUE ESPECIAL (25463)</option>
+                    <option value="25477">CARTÃO DE CRÉDITO - rotativo (25477)</option>
+                    <option value="25478">CARTÃO DE CRÉDITO - parcelado (25478)</option>
+                    <option value="25468">CONSIGNADO aposentados e pensionistas INSS (25468)</option>
+                    <option value="25467">CONSIGNADO servidor público (25467)</option>
+                    <option value="25466">CONSIGNADO empregado privado (25466)</option>
+                    <option value="25464">CRÉDITO PESSOAL não-consignado (25464)</option>
+                    <option value="25465">CRÉDITO não-consignado para REFINANCIAMENTO de outras dívidas (25465)</option>
+                    <option value="25472">CRÉDITO para aquisição de outros bens (exceto veículos) (25472)</option>
+                    <option value="25471">VEÍCULOS - Alienação Fiduciária (25471)</option>
+                </optgroup> 
+                 <optgroup label="SÉRIES MENOS USADAS (PF E PJ)">
+                    <option value="25447">VEÍCULOS aquisição - Alienação Fiduciária para PJ (25447)</option>
+                    <option value="25470">Crédito pessoal total PF (usado para décimo-terceiro) (25470)</option>
+                    <option value="25505">Microcrédito destinado a microempreendedores (25505)</option>
+                </optgroup>
               </select>
               
               <label for="ip_taxa_mensal_contratual"><br>
@@ -159,9 +167,9 @@
 				       
                
         <label for="tldr"><u><b>CONCLUSÃO</b></u><br></label>
-        <input type="text" id="tldr" name="tldr" readonly class="tldr">
+        <input type="text" id="tldr" name="tldr" readonly class="tldr" placeholder="será automaticamente informado após a inserção dos dados acima requeridos">
         <output id="conclus" name="conclus" readonly class="conclus">
-          
+                      
         </fieldset>
               
                   </form>
