@@ -167,12 +167,12 @@ label{
         padding: 0.5rem;
 }
 .logo {
-    width: 300px;
+    width: 200px;
     display: block;
     margin: 0 auto;
 }
 .logo-footer {
-    width: 350px; /* Ajuste o tamanho da logo conforme necessário */
+    width: 290px; /* Ajuste o tamanho da logo conforme necessário */
 }
 .disclaimer {
     margin-left: 0rem;

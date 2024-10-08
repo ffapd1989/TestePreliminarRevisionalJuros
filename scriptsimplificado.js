@@ -160,8 +160,13 @@ async function mudar_modalidade(event) {
 // Função para comparar taxas
 function compararTaxas() {
     if (bloquearCompararTaxas) {
-        console.log('A função compararTaxas está bloqueada para as modalidades 25463 e 25477.');
+        console.log('A função compararTaxas está bloqueada para as modalidades 25463 e 25477, bem como "nihil".');
         return;
+    }
+
+    if (MODALIDADE === "nihil" || MODALIDADE === "25463" || MODALIDADE === "25477") {
+        console.log("A função compararTaxas foi bloqueada para a modalidade 'nihil' ou séries proibidas.");
+        return;  // Sai da função sem fazer nada
     }
 
     const TAXA_MENSAL_CONTRATUAL = document.getElementById('ip_taxa_mensal_contratual');
@@ -190,7 +195,7 @@ function compararTaxas() {
         CONCLUS.innerHTML = `Verifica-se que a taxa contratual (${formatarNumeroComVirgula(taxaMensalContratual)}% a.m.) até é superior à taxa média apurada pelo BACEN (${formatarNumeroComVirgula(taxaMensalBacen)}% a.m.), porém sem sequer exceder a margem tolerável de 30% (equivalente a ${formatarNumeroComVirgula(taxaMensalBacenLimit30)}% a.m.), pelo que não pode ser considerada abusiva, conforme entendimento jurisprudencial predominante.` + adicionarBotaoImprimir();
         TLDR.value = 'NÃO, NÃO HÁ JUROS ABUSIVOS NO SEU CONTRATO.';
     } else if (taxaMensalContratual < taxaMensalBacen) {
-        CONCLUS.innerHTML = `Verifica-se que a taxa mensal contratual praticada (${formatarNumeroComVirgula(taxaMensalContratual)}% a.m.) chega a ser inclusive INFERIOR à taxa média do BACEN para idêntico produto financeiro (${formatarNumeroComVirgula(taxaMensalBacen)}% a.m.). Ou seja, não há qualquer possibilidade de se considerarem abusivos os juros praticados, portanto, se não houver outras situações jurídicas complicadas, fique atento à ação de golpistas que prometam soluções milagrosas envolvendo revisão de juros.` + adicionarBotaoImprimir();
+        CONCLUS.innerHTML = `Verifica-se que a taxa mensal contratual praticada (${formatarNumeroComVirgula(taxaMensalContratual)}% a.m.) chega a ser inclusive INFERIOR à taxa média do BACEN para idêntico produto financeiro (${formatarNumeroComVirgula(taxaMensalBacen)}% a.m.). Ou seja, não há qualquer possibilidade de se considerarem abusivos os juros praticados. Portanto, se não houver outras situações jurídicas complicadas, fique atento à ação de golpistas que prometam soluções milagrosas envolvendo revisão de juros.` + adicionarBotaoImprimir();
         TLDR.value = 'NÃO, NÃO HÁ JUROS ABUSIVOS NO SEU CONTRATO. NÃO MESMO!';
     }
 }
