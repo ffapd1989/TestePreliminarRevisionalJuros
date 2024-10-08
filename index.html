@@ -110,13 +110,19 @@
         <fieldset>
             <legend>OS JUROS DO MEU CONTRATO ESTÃO ABUSIVOS?<div style="font-size: 0.9rem; font-weight: normal;">TESTE DE ABUSIVIDADE DE JUROS PRÉVIO AO CÁLCULO REVISIONAL</div></legend>
             <p style="margin-top: 0px;">
-              <label for="ip_assistido">NOME<br>
+              <label for="ip_assistido">NOME <span class="no-print" style="font-size: 0.9rem; font-weight: normal;">(opcional para consultas)</span><br>
               </label>
-              <input type="text" id="ip_assistido" placeholder="NOME COMPLETO">
+              <input type="text" id="ip_assistido" placeholder="NOME COMPLETO (opcional para consultas)">
               
-              <label for="ip_cpf"><br>CPF<br>
+              <label for="ip_cpf"><br>CPF <span class="no-print" style="font-size: 0.9rem; font-weight: normal;">(opcional para consultas)</span><br>
               </label>
-              <input type="text" id="ip_cpf" placeholder="000.000.000-00">
+              
+              <input type="text" id="ip_cpf" placeholder="000.000.000-00 (opcional para consultas)">
+
+              <label for="ip_refcontrato"><br>NÚMERO DO CONTRATO / BANCO <span class="no-print" style="font-size: 0.9rem; font-weight: normal;">(opcional para consultas)</span> <br>
+              </label>
+              
+              <input type="text" id="ip_cpf" placeholder="contrato #2312321 com o Banco Gringotts (opcional para consultas)">
               
               <label for="ip_data"><br>MÊS EM QUE CELEBRADO O EMPRÉSTIMO<br></label>
               <input type="month" id="ip_data">
@@ -196,7 +202,7 @@
                       </a>
                   </td>
                   <td class="footer-text">
-                  <div style="font-weight: normal">DESENVOLVIDO E FORNECIDO PELO <B>CATE - CÁLCULOS</B><BR> DA DEFENSORIA PÚBLICA DO ESTADO DO RIO GRANDE DO SUL</div><div class="footer" style="font-size: 80%">v1.3 de 08/10/2024.</div><div class="footer no-print" style="font-size: 80%; margin-top: 0px;"><br><b>Desenvolvimento:</b> Defensor Público FELIPE DRUMMOND usando ChatGPT-4o<div style="font-size: 90%; font-style: italic;">Agradecemos a Yan Christino pela versão inicial da ferramenta com uso da API do BACEN!</div><b>Sugestões? </b><a href="mailto: cate@defensoria.rs.def.br">E-mail</a></div></p>
+                  <div style="font-weight: normal">DESENVOLVIDO E FORNECIDO PELO <B>CATE - CÁLCULOS</B><BR> DA DEFENSORIA PÚBLICA DO ESTADO DO RIO GRANDE DO SUL</div><div class="footer" style="font-size: 80%">v1.4 de 08/10/2024.</div><div class="footer no-print" style="font-size: 80%; margin-top: 0px;"><br><b>Desenvolvimento:</b> Defensor Público FELIPE DRUMMOND usando ChatGPT-4o<div style="font-size: 90%; font-style: italic;">Agradecemos a Yan Christino pela versão inicial da ferramenta com uso da API do BACEN!</div><b>Sugestões? </b><a href="mailto: cate@defensoria.rs.def.br">E-mail</a></div></p>
                   </td>
               </tr>
           </table>

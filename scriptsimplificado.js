@@ -93,6 +93,7 @@ async function mudar_modalidade(event) {
     if (!event || !event.target) return;
     
     const MODALIDADE = event.target;
+    console.log("Modalidade selecionada:", MODALIDADE.value);
 
     // Verifica se a modalidade é 25463 ou 25477, exibe as mensagens e bloqueia a comparação de taxas
     if (MODALIDADE.value === "25463" || MODALIDADE.value === "25477") {
@@ -107,8 +108,24 @@ async function mudar_modalidade(event) {
         bloquearCompararTaxas = false;     
     }
 
+    // Verifica se a modalidade é "nihil", reseta TLDR e CONCLUS
     if (MODALIDADE.value === "nihil") {
-        return;  // Sai da função sem fazer nada
+        console.log("Modalidade 'nihil' selecionada, resetando TLDR e CONCLUS");
+        document.getElementById('conclus').innerHTML = ``;
+        document.getElementById('tldr').innerText = ``;
+        document.getElementById('conclus').style.display = 'none';  // Oculta e...
+        document.getElementById('conclus').offsetHeight;  // Trigger reflow
+        document.getElementById('conclus').style.display = '';  // Mostra novamente
+        requestAnimationFrame(() => {
+            console.log('Modalidade nihil resetando TLDR e CONCLUS após todos os eventos.');
+            document.getElementById('conclus').innerHTML = '';
+            document.getElementById('tldr').innerText = '';
+        });
+        bloquearCompararTaxas = true;
+        return;
+    } else {
+        // Libera a função compararTaxas se uma modalidade diferente for selecionada
+        bloquearCompararTaxas = false;             
     }
 
     let data_para_busca = `${DATA_EMPRESTIMO.value}-01`.split('-');
