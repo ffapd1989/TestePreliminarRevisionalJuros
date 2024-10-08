@@ -6,10 +6,6 @@
     <link rel="stylesheet" href="style.css">
     <title>Teste preliminar revisional - meus juros são abusivos?</title>
     <style>
-        #conclus {
-            font-weight: bold;
-        }
-
         /* Estilos para impressão */
         @media print {
             body {
@@ -67,7 +63,20 @@
             .banco-central {
                 background-color: #e0e0e0 !important;
             }
-
+            #label-tldr {
+                background-color: #585858 !important;
+                opacity: 100%;
+                text-decoration-line: none;
+                color: #ffffff !important;
+                font-weight: bold !important;
+                letter-spacing: 2px;
+                padding: 0.3rem 0rem 0.3rem 4rem;
+                margin-top: 10px;
+                border-radius: 2rem;
+                border-color: #5f5f5f !important;
+                border-style: dashed;
+                border-width: 0px;
+            }
             .banco-central-limit30 {
                 background-color: #d4d4d4 !important;
             }
@@ -166,9 +175,11 @@
             
 				       
                
-        <label for="tldr"><u><b>CONCLUSÃO</b></u><br></label>
-        <input type="text" id="tldr" name="tldr" readonly class="tldr" placeholder="será automaticamente informado após a inserção dos dados acima requeridos">
-        <output id="conclus" name="conclus" readonly class="conclus">
+        <label for="tldr" id="label-tldr">CONCLUSÃO<br></label>
+        <div id="aguarda" class="aguarda no-print">(será mostrada após a inserção das informações pelo usuário - esta informação sumirá quando o relatório for impresso)</div>
+        <output id="tldr" name="tldr" readonly class="tldr"></output>
+        <output id="conclus" name="conclus" readonly class="conclus"></output>
+
                       
         </fieldset>
               

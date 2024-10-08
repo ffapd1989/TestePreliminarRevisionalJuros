@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Função que cria o botão de impressão
 function adicionarBotaoImprimir() {
-    return `<button class="btn-imprimir" onclick="window.print()" style="
+    return `<button class="btn-imprimir" onclick="imprimirSemReiniciar(event)" style="
         background-color: #006400;  /* Verde escuro */
         color: white;               /* Texto branco */
         font-weight: bold;          /* Negrito */
@@ -52,9 +52,15 @@ function adicionarBotaoImprimir() {
         border-radius: 5px;         /* Borda arredondada */
         cursor: pointer;            /* Cursor de mão */
     ">
-    IMPRIMIR
+    GERAR RELATÓRIO (IMPRIMIR / SALVAR COMO PDF)
     </button>`;
 }
+
+function imprimirSemReiniciar(event) {
+    event.preventDefault(); // Evita o comportamento padrão do botão (reiniciar o formulário)
+    window.print(); // Aciona a impressão
+}
+
 
 
 

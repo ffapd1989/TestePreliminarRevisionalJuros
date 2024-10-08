@@ -1,13 +1,13 @@
 html, body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    height: 96vh;
+    height: 100%;
     margin: 0;
     padding: 0;
-}
-
-body{
+    background-size: cover;
+    min-height: 100Vh;
     background: linear-gradient(#ffffff, #e1ffed);
-
+    overflow-y: auto; /* Habilita rolagem vertical se necessário */
+    -webkit-overflow-scrolling: touch; /* Rolagem suave para iPhone */
 }
 
 fieldset{
@@ -59,6 +59,27 @@ label{
     text-decoration: none;
 }
 
+#label-tldr {
+    background-color: #dbdbdb;
+    opacity: 100%;
+    text-decoration-line: none;
+    color: #00452b;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    padding: 0.3rem 0rem 0.3rem 4rem;
+    margin-top: 10px;
+    border-radius: 2rem;
+    border-color: #000000 !important;
+    border-style: dashed;
+    border-width: 1px;
+}
+.aguarda {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: grey;
+    text-indent: 2rem;
+    margin-top: 10px;
+}
 .contratual {
     margin: 0.2rem;
     background-color: #e1ece6;
@@ -108,7 +129,7 @@ label{
     width: 100%;
     border-style: none;
     border-width: 0px;
-    text-align: justify;    
+    text-align: justify; 
 }
 .botaoconclusao{
     background-color: black;
@@ -122,6 +143,8 @@ label{
     color: black;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border-width: 0px;
+    word-wrap: break-word;
+    white-space: normal;   
 }
 
 .valor-negativo{
