@@ -50,14 +50,14 @@
                 display: none;
             }
             .tldr {
-                font-size: 1.2rem;
+                font-size: 1.15rem;
                 color: black;
                 font-weight: bold;
                 border-style: none;
                 border-width: 0px;            
             }
             .conclus {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 color: #272727;            
             }
             .banco-central {
@@ -77,7 +77,7 @@
                 border-style: dashed;
                 border-width: 0px;
             }
-            .banco-central-limit30 {
+            .banco-central-limit20 {
                 background-color: #d4d4d4 !important;
             }
 
@@ -95,7 +95,7 @@
             }
             @page {
                 size: A4 portrait;
-                margin: 7mm !important;
+                margin: 2mm !important;
                 padding: 0mm !important;
             }
           }
@@ -159,21 +159,21 @@
                   <td width="20%" style="font-size: 1.5rem; text-decoration: underline;">TAXA (%)</td>
                   <td width="20%">CONTRATUAL</td>
                   <td width="20%">MÉDIA<BR>BACEN</td>
-                  <td width="20%">PARÂMETRO ABUSIVIDADE 30%</td>
+                  <td width="20%">PARÂMETRO ABUSIVIDADE 20%</td>
                   <td width="20%">PARÂMETRO ABUSIVIDADE 50%</td>
                 </tr>
                 <tr>
                   <td width="20%">ao mês</td>
                   <td width="20%"><input type="number" id="ip_taxa_mensal_contratual" class="contratual" placeholder="DIGITE AQUI"></td>
                   <td width="20%"><input type="number" id="ip_taxa_mensal_bacen" class="banco-central" readonly placeholder="automático" style="cursor: not-allowed;"></td>
-                  <td width="20%"><input type="number" id="ip_taxa_mensal_bacen_limit30" class="banco-central-limit30" readonly placeholder="automático" style="cursor: not-allowed;"></td>
+                  <td width="20%"><input type="number" id="ip_taxa_mensal_bacen_limit20" class="banco-central-limit20" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                   <td width="20%"><input type="number" id="ip_taxa_mensal_bacen_limit50" class="banco-central-limit50" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                 </tr>
                 <tr>
                   <td width="20%">ao ano</td>
                   <td width="20%"><input type="number" id="ip_taxa_anual_contratual" class="contratual" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                   <td width="20%"><input type="number" id="ip_taxa_anual_bacen" class="banco-central" readonly placeholder="automático" style="cursor: not-allowed;"></td>
-                  <td width="20%"><input type="number" id="ip_taxa_anual_bacen_limit30" class="banco-central-limit30" readonly placeholder="automático" style="cursor: not-allowed;"></td>
+                  <td width="20%"><input type="number" id="ip_taxa_anual_bacen_limit20" class="banco-central-limit20" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                   <td width="20%"><input type="number" id="ip_taxa_anual_bacen_limit50" class="banco-central-limit50" readonly placeholder="automático" style="cursor: not-allowed;"></td>
                 </tr>
               </tbody>
