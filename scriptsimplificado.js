@@ -15,6 +15,9 @@ let TAXA_MENSAL_BACEN_LIMIT20 = document.getElementById('ip_taxa_mensal_bacen_li
 let CONCLUS = '';
 let TLDR = '';
 
+// URL do proxy no Vercel
+const PROXY_URL = "https://dpe-juros-beta.vercel.app/api/proxy";
+
 // Variavel para guardar informação do banco
 let data = '';
 
@@ -27,12 +30,10 @@ MODALIDADE.addEventListener('blur', (event) => {
     mudar_modalidade(event);
 });
 
-
 ANO_EMPRESTIMO.addEventListener('change', (event) => {
     verificarEChamarGetTaxa(event)
     ANO_EMPRESTIMO.blur();
 });
-
 
 MES_EMPRESTIMO.addEventListener('change', (event) => {
     verificarEChamarGetTaxa(event)
@@ -42,7 +43,6 @@ MES_EMPRESTIMO.addEventListener('change', (event) => {
 TAXA_MENSAL_CONTRATUAL.addEventListener('change', (event) => {
     compararTaxas();
 });
-
 
 document.getElementById('ip_cpf').addEventListener('input', function() {
     let valor = this.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
@@ -79,15 +79,14 @@ document.getElementById('ip_refcontrato').addEventListener('keydown', function(e
     }
 });
 
-
 // Evento DOMContentLoaded para garantir que os elementos estão carregados
 document.addEventListener('DOMContentLoaded', () => {
     preencherSelecaoAno();
 
     // fetch para "aquecer" o DNS
-    fetch("https://api.bcb.gov.br/dados/serie/bcdata.sgs.25478/dados?formato=json")
-        .then(() => console.log("Cache aquecido"))
-        .catch(() => console.log("Erro na pré-requisição"));
+    fetch('https://dpe-juros-beta.vercel.app/api/proxy?codigo=25464')
+    .then(() => console.log("Cache aquecido"))
+    .catch(() => console.log("Erro na pré-requisição"));
 
     // Dispara a função compararTaxas ao mudar o valor ou ao perder o foco no campo de taxa contratual
     if (TAXA_MENSAL_CONTRATUAL) {
@@ -174,6 +173,8 @@ function get_taxa(event, data){
                 
                 TAXA_MENSAL_BACEN_LIMIT20.value = (valorTaxaMensal * 1.2).toFixed(2);
                 TAXA_ANUAL_BACEN_LIMIT20.value = ((((1 + (valorTaxaMensal / 100)) ** 12) - 1) * 100 * 1.2).toFixed(2);
+        }else{
+            alert("Data não encontrada no BACEN!");
         }
     }
 }
@@ -233,19 +234,21 @@ async function mudar_modalidade(event) {
 
     if (MODALIDADE.value != 'nihil') {
         try {
-            let response = await fetch(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.${MODALIDADE.value}/dados?formato=json`);
+            let response = await fetchComRetry(`${PROXY_URL}?codigo=${MODALIDADE.value}`);
+            if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+            
             data = await response.json();
         } catch (err) {
-            alert(`Dados não encontrados no SGS-BACEN: ${err}`);
+            alert(`Erro ao buscar dados do BACEN: ${err.message}`);
         }
         verificarEChamarGetTaxa(event);
     }
+
     loadingMessage.remove();
     makeFieldsMutable();
 }
 
-
-
+// Função que verifica se é valido verificar as taxas
 function verificarEChamarGetTaxa(event) {
     if (ANO_EMPRESTIMO.value != "nihil" && MES_EMPRESTIMO.value != "nihil" && data) {
         get_taxa(event, data);
@@ -253,6 +256,21 @@ function verificarEChamarGetTaxa(event) {
             compararTaxas();
         }
     }
+}
+
+// Função que faz o fetch através do proxy da api e realiza 3 tentativas até retornar algo válido
+async function fetchComRetry(url, tentativas = 3, intervalo = 3000) {
+    for (let i = 0; i < tentativas; i++) {
+        try {
+            let response = await fetch(url);
+            if (response.ok) return await response;
+            console.warn(`Tentativa ${i + 1} falhou, tentando novamente...`);
+        } catch (error) {
+            console.error(`Erro na tentativa ${i + 1}:`, error);
+        }
+        await new Promise(res => setTimeout(res, intervalo)); // Espera antes da próxima tentativa
+    }
+    throw new Error("Falha ao buscar dados após 3 tentativas. Verifique sua conexão ou tente novamente mais tarde.");
 }
 
 // Função para comparar taxas

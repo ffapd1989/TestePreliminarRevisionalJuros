@@ -1,1 +1,2 @@
-Teste preliminar de abusividade de juros conforme parâmetro jurisprudencial segundo o qual é abusivo aquele contrato cuja taxa de juros for superior a uma vez e meia a taxa média do BACEN para igual modalidade de produto financeiro.
+Teste preliminar de abusividade de juros conforme parâmetros jurisprudenciais do TJRS.
+Serve a presente ferramenta como mera forma de facilitar o acesso aos dados do Sistema Gerenciador de Séries Temporais do Banco Central do Brasil, diante de sua hermética interface ao público leigo. Pode haver outros fatores para além da mera abusividade quantitativa dos juros contratuais que ensejem ação revisional, devendo tal análise ser feita por profissional especializado.
