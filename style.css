@@ -1,64 +1,111 @@
-html, body{
+/* Estilos gerais já existentes */
+html, body {
+    
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     height: 100%;
-    margin: 0;
+    font-size: 1rem;
+    max-width: 100%;
+    margin: 0 auto;
     padding: 0;
     background-size: cover;
-    min-height: 100Vh;
-    background: linear-gradient(#ffffff, #e1ffed);
-    overflow-y: auto; /* Habilita rolagem vertical se necessário */
-    -webkit-overflow-scrolling: touch; /* Rolagem suave para iPhone */
+    min-height: 100vh;
+    background: linear-gradient(#ffffff, #d4ebdd, #ffffff);
+    align-items: center;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
-fieldset{
+fieldset {
     display: flex;
-    width: 93%;
     flex-direction: column;
     padding: 1rem;
     justify-content: left;
     align-items: left;
-    margin: 1rem;
-    border-width: 2px;
+    margin: 0.5rem;
+    border-width: 3px;
     border-color: #186c4c;
-    }
-
-legend{
-    text-align: center;
-    font-size: 1.6rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin: 0px;
 }
 
-input,select{
-    padding: 0.5rem;
+legend {
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+input, select {
+    padding: 0.65rem;
     border-radius: 1rem;
     border-width: 1px;
     background-color: #e1ece6;
-    font-size: 1.3rem;
-    color:#1d1d1d;
+    font-size: 1.5rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width: 90%;
-    transition: .5s;
-}
-
-input:hover,select:hover{
-    background-color: #f3fcf7;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
 }
 
 ::placeholder{
-    color:rgb(173, 180, 172);
+    color:rgb(134, 141, 133);
     opacity:100%;
     font-style: italic;
-    font-size: 1.0rem;
+    font-size: 1.1rem;
     }
 
-label{
-    font-size: 1.1rem;
-    font-weight: bold;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-decoration: none;
+
+    label{
+        font-size: 1rem;
+        font-weight: bold;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        text-decoration: none;
+    }
+
+.contratual{
+    margin: 0.8rem;
+    width: 90%;
+    box-sizing: border-box;
 }
 
+.banco-central {
+    margin: 0.2rem;
+    background-color: #f7ffd1;
+    color: #2f6b35;
+    width: 95%;
+    box-sizing: border-box;
+}
+
+.banco-central-limit20 {
+    margin: 0.2rem;
+    width: 95%;
+    background-color: #d6f5d3;
+    color: #205c3b;
+    box-sizing: border-box;
+}
+
+.banco-central-limit50 {
+    margin: 0.2rem;
+    width: 95%;
+    background-color: #accb98;
+    color: #000000;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #006400;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004d00;
+}
 #label-tldr {
     background-color: #dbdbdb;
     opacity: 100%;
@@ -73,71 +120,11 @@ label{
     border-style: dashed;
     border-width: 1px;
 }
-.aguarda {
-    font-size: 0.8rem;
-    font-style: italic;
-    color: grey;
-    text-indent: 2rem;
-    margin-top: 10px;
-}
-.contratual {
-    margin: 0.2rem;
-    background-color: #e1ece6;
-    color: #1d1d1d;
-    width: 80%;
-    min-width: 100px;
-}
 
-.banco-central {
-    margin: 0.2rem;
-    background-color: #f7ffd1;
-    color: #2f6b35;
-    width: 80%;
-    min-width: 100px;
-}
-
-.banco-central-limit30 {
-    margin: 0.2rem;
-    width: 80%;
-    background-color: #d6f5d3;
-    color: #205c3b;
-    min-width: 100px;
-}
-
-.banco-central-limit50 {
-    margin: 0.2rem;
-    width: 80%;
-    background-color: #accb98;
-    color: #000000;
-    min-width: 100px;
-}
-
-.tabelajuros {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: bold;
-    font-size: 1.2rem;
-    border-radius: 1px;
-    border-style: solid;
-    border-width: 0px;
-    text-align: center;
-}
-.conclus {
-    background: none;
-    color: rgb(14, 2, 2);
-    font-size: 1.4rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width: 100%;
-    border-style: none;
-    border-width: 0px;
-    text-align: justify; 
-}
-.botaoconclusao{
-    background-color: black;
+.tldr {
     border-radius: 0px;
-}
-.tldr{
-    border-radius: 0px;
-    font-size: 1.7rem;
+    padding-top: 2%;
+    font-size: 1.3rem;
     font-weight: bold;
     background: none !important;
     color: black;
@@ -147,39 +134,105 @@ label{
     white-space: normal;   
 }
 
-.valor-negativo{
-    background-color: #ce7575;
+.conclus {
+    margin-bottom: 5px;
+    background: none;
+    color: rgb(14, 2, 2);
+    font-size: 1rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 100%;
+    border-style: none;
+    border-width: 0px;
+    text-align: justify; 
 }
-.footer {
+
+.disclaimer {
+    padding-left: 2%;
+    padding-right: 2%;
     margin-top: 0px;
     font-size: 14px;
-    text-align: center;
     color: #555555;
 }
-.footer-table {
-        margin: 0 auto; /* Centraliza a tabela horizontalmente */
-        table-layout: fixed; /* Garante que as colunas tenham largura fixa */
-        padding-top: 1rem;
+
+.footer {
+    padding-left: 2%;
+    padding-right: 2%;
 }
-    
-.footer-table td {
-        vertical-align: middle; /* Alinha verticalmente no meio */
-        padding: 0.5rem;
+
+.listinha {
+    font-size: 1.1rem; /* Um pouco menor do que os outros */
+    padding: 0.3rem; /* Reduzindo o preenchimento */
+    border-radius: 0.8rem; /* Ajustando a borda para manter o design */
 }
-.logo {
-    width: 200px;
-    display: block;
-    margin: 0 auto;
+
+.listinha::placeholder {
+    font-size: 0.8rem; /* Placeholder menor */
+    font-style: italic; /* Placeholder em itálico */
 }
-.logo-footer {
-    width: 290px; /* Ajuste o tamanho da logo conforme necessário */
-}
-.disclaimer {
-    margin-left: 0rem;
-    font-size: 0.8rem;
+
+.listinha2 {
+    font-size: 1.04rem; /* Um pouco menor do que os outros */
     font-weight: normal;
-    width: 90%;
-    text-align: justify;
-    margin-left: 2rem;
-    line-height: 90%;
+    padding: 0rem; /* Reduzindo o preenchimento */
+    border-radius: 0.8rem; /* Ajustando a borda para manter o design */
+}
+
+.logo-footer {
+    width: 100%;
+    max-width: 400px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 1rem;
+}
+.footer-table-print {
+    display: none;
+}
+
+/* Estilos responsivos para dispositivos móveis */
+@media (max-width: 768px) {
+    html, body {
+        font-size: 0.9rem;
+        padding: 0;
+    }
+
+    fieldset {
+        margin: 0.5rem;
+        padding: 0.8rem;
+    }
+
+    legend {
+        font-size: 1.4rem;
+    }
+
+    input, select {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+
+    .footer {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+
+    .disclaimer {
+        font-size: 0.7rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        text-align: justify;
+    }
+
+    .logo-footer {
+        width: 100%;
+        max-width: 250px;
+    }
 }
