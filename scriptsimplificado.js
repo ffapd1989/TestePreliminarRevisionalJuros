@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     preencherSelecaoAno();
 
     // fetch para "aquecer" o DNS
-    fetch('https://dpe-juros-beta.vercel.app/api/proxy?codigo=25464')
+    fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.25464/dados?formato=json')
     .then(() => console.log("Cache aquecido"))
     .catch(() => console.log("Erro na pré-requisição"));
 
@@ -224,8 +224,8 @@ async function mudar_modalidade(event) {
         document.head.appendChild(style);
     }
 
-    if (MODALIDADE.value === "25463" || MODALIDADE.value === "25477") {
-        CONCLUS = `Infelizmente, os cálculos envolvendo cartão de crédito rotativo e cheque especial costumam envolver maior complexidade, conforme o número de meses em que o consumidor permaneceu em débito com a instituição financeira, de forma que não é possível fazê-lo estaticamente, isto é, pensando apenas nos juros do momento em que a pessoa não pagou a fatura ou entrou no cheque especial. Assim, esta ferramenta não serve para a funcionalidade desejada, sendo aconselhável procurar assistência jurídica para analisar a viabilidade de ação revisional.`;
+    if (MODALIDADE.value === "25463" || MODALIDADE.value === "25477" || MODALIDADE.value === "25478") {
+        CONCLUS = `Infelizmente, os cálculos envolvendo cartão de crédito rotativo, cartão de crédito parcelado e cheque especial costumam envolver maior complexidade, conforme o número de meses em que o consumidor permaneceu em débito com a instituição financeira, de forma que não é possível fazê-lo estaticamente, isto é, pensando apenas nos juros do momento em que a pessoa não pagou a fatura ou entrou no cheque especial. Assim, esta ferramenta não serve para a funcionalidade desejada, sendo aconselhável procurar assistência jurídica para analisar a viabilidade de ação revisional.`;
         TLDR = `DESCULPE, ESTA FERRAMENTA AINDA NÃO SERVE PARA ISSO.`;
         loadingMessage.remove();
         makeFieldsMutable();
@@ -234,7 +234,7 @@ async function mudar_modalidade(event) {
 
     if (MODALIDADE.value != 'nihil') {
         try {
-            let response = await fetchComRetry(`${PROXY_URL}?codigo=${MODALIDADE.value}`);
+            let response = await fetchComRetry(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.${MODALIDADE.value}/dados?formato=json`);
             if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
             
             data = await response.json();
@@ -258,8 +258,8 @@ function verificarEChamarGetTaxa(event) {
     }
 }
 
-// Função que faz o fetch através do proxy da api e realiza 3 tentativas até retornar algo válido
-async function fetchComRetry(url, tentativas = 3, intervalo = 3000) {
+// Função que faz o fetch 3 vezes até gerar resposta
+async function fetchComRetry(url, tentativas = 3, intervalo = 5000) {
     for (let i = 0; i < tentativas; i++) {
         try {
             let response = await fetch(url);
@@ -281,7 +281,7 @@ function compararTaxas() {
     document.getElementById('conclus').innerHTML = '';
     document.getElementById('tldr').value = '';
 
-    if (MODALIDADE === "nihil" || MODALIDADE === "25463" || MODALIDADE === "25477") {
+     if (MODALIDADE.value === "25463" || MODALIDADE.value === "25477" || MODALIDADE.value === "25478") {
         console.log("A função compararTaxas foi bloqueada para a modalidade 'nihil' ou séries proibidas.");
         return;  // Sai da função sem fazer nada
     }
